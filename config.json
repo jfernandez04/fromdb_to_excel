@@ -1,1 +1,1 @@
-{"user": "root", "password": "prizenatura", "host": "10.10.0.18", "port": "3306", "database": "db_export_prize"}
+{"user": "some_user", "password": "some_password", "host": "some_host", "port": "some_port", "database": "some_database"}
