@@ -5,17 +5,20 @@ from query import q, table
 from letters import letters
 import string
 import json
+import os
+import datetime
 
-with open('config.json') as json_data_file:
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
+with open(dir_path + '/config.json', "r") as json_data_file:
     conf = json.load(json_data_file)
 # print(conf)
 conn = mysql.connector.connect(**conf)
 cur = conn.cursor()
-# q = "select * from base_banco"
-
-q_describe = "describe " + table
-cur.execute(q)
-rows = cur.fetchall()
+cur.execute("set innodb_lock_wait_timeout=100;")
+q_describe = "describe " + table + ";"
+# cur.execute(q, multi=True)
+# rows = cur.fetchall()
 
 cur.execute(q_describe)
 bdescribe = cur.fetchall()
@@ -30,10 +33,14 @@ for bdes_row in bdescribe:
 num1 = 2
 col = 0
 num = 1
-for row in rows:
+
+cur.execute(q)
+data = cur.fetchall()
+for row in data:
     col = 0
-    for ab in row:
-        ws.write(string.upper(letters[col] + str(num1)), ab)
+    for line in range(len(row)):
+        l = letters[col] + str(num1)
+        ws.write(string.upper(l), row[line])
         col += 1
     num1 += 1
 
