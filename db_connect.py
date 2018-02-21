@@ -22,7 +22,7 @@ q_describe = "describe " + table + ";"
 
 cur.execute(q_describe)
 bdescribe = cur.fetchall()
-
+#Nombre del archivo que se generará
 wb = xlsxwriter.Workbook('test.xlsx')
 ws = wb.add_worksheet()
 col = 0
