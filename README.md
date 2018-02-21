@@ -1,8 +1,7 @@
 # fromdb_to_excel
-Project to export from views and querys to excel
 
-**#ES**
-La idea es tener una alternativa al conector odbc que por las pruebas no he podido hacer andar.
+## **#ES**
+ Este script sirve como alternativa al conector [MySQL ODBC para Osx](https://dev.mysql.com/doc/connector-odbc/en/connector-odbc-configuration-dsn-osx.html) que hasta la fecha no he podido configurar para trabajar.
 
-**#EN**
-The main object is to have an alternative to odbc connector on OSX for the one who cannot make it work
+## **#EN**
+ This script works as an option for those who haven't been able to work with [MySQL OsX ODBC](https://dev.mysql.com/doc/connector-odbc/en/connector-odbc-configuration-dsn-osx.html).
