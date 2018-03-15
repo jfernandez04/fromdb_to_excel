@@ -22,6 +22,11 @@ num = 1
 num1 = 2
 cur.callproc(sp, arg)
 for row in cur.stored_results():
+    col1 = 0
+    for clnames in row.description:
+        l = letters[col1] + str(num)
+        ws.write(string.upper(l), clnames[0])
+        col1 += 1
     for line in row.fetchall():
         col = 0
         for lll in line:
@@ -29,5 +34,4 @@ for row in cur.stored_results():
             ws.write(string.upper(l), lll)
             col += 1
         num1 += 1
-print num1
 wb.close()
