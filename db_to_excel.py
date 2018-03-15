@@ -1,28 +1,23 @@
 # coding=utf-8
 import mysql.connector
 import xlsxwriter
-from query import q, table
+from query import q, table,columns
 from letters import letters
 import string
 import json
 import os
-import datetime
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 with open(dir_path + '/config.json', "r") as json_data_file:
     conf = json.load(json_data_file)
-# print(conf)
+
 conn = mysql.connector.connect(**conf)
 cur = conn.cursor()
 cur.execute("set innodb_lock_wait_timeout=100;")
 q_describe = "describe " + table + ";"
-# cur.execute(q, multi=True)
-# rows = cur.fetchall()
-
 cur.execute(q_describe)
 bdescribe = cur.fetchall()
-#Nombre del archivo que se generará
 wb = xlsxwriter.Workbook('test.xlsx')
 ws = wb.add_worksheet()
 col = 0
